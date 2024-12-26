@@ -26,4 +26,8 @@ commit: ## commit changes
 push: ## push changes
 	git push origin
 
+.PHONY: changelog
+changelog: ## generate changelog
+	git cliff -o CHANGELOG.md
+
 .DEFAULT_GOAL := help

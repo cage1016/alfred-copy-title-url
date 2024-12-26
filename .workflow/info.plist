@@ -300,16 +300,6 @@
 		</dict>
 		<dict>
 			<key>config</key>
-			<dict/>
-			<key>type</key>
-			<string>alfred.workflow.automation.task</string>
-			<key>uid</key>
-			<string>B590C585-904A-41FA-B225-052A39488DCE</string>
-			<key>version</key>
-			<integer>1</integer>
-		</dict>
-		<dict>
-			<key>config</key>
 			<dict>
 				<key>concurrently</key>
 				<false/>
@@ -348,6 +338,31 @@ print(output)</string>
 		</dict>
 		<dict>
 			<key>config</key>
+			<dict/>
+			<key>type</key>
+			<string>alfred.workflow.automation.task</string>
+			<key>uid</key>
+			<string>B590C585-904A-41FA-B225-052A39488DCE</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>tasksettings</key>
+				<dict/>
+				<key>taskuid</key>
+				<string>com.alfredapp.automation.core/macOS/app.current.browser</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.automation.task</string>
+			<key>uid</key>
+			<string>D376BB90-7F43-4247-8B62-E75CC3A90553</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
 			<dict>
 				<key>action</key>
 				<integer>0</integer>
@@ -376,21 +391,6 @@ print(output)</string>
 			<string>B083540C-0BC5-416E-8EC3-864DD976A303</string>
 			<key>version</key>
 			<integer>2</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>tasksettings</key>
-				<dict/>
-				<key>taskuid</key>
-				<string>com.alfredapp.automation.core/macOS/app.current.browser</string>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.automation.task</string>
-			<key>uid</key>
-			<string>D376BB90-7F43-4247-8B62-E75CC3A90553</string>
-			<key>version</key>
-			<integer>1</integer>
 		</dict>
 		<dict>
 			<key>config</key>
@@ -517,11 +517,14 @@ EOL</string>
     // Process each pattern and output the result
     const output = patternList.map((pattern, index) =&gt; {
         return {
-            uid: `pattern-${index}`,
-            subtitle: `${browserName} ${title}`,
+            uid: `pattern-${index}`,            
             quicklookurl: url,
+            subtitle: title,
             title: pattern.trim(),
             arg: pattern.trim(),
+            icon : {
+                path: `./${browserName}.png`
+            }
         };
     });
 
@@ -551,6 +554,26 @@ EOL</string>
 		<dict>
 			<key>config</key>
 			<dict>
+				<key>argument</key>
+				<string></string>
+				<key>passthroughargument</key>
+				<false/>
+				<key>variables</key>
+				<dict>
+					<key>surl</key>
+					<string>{query}</string>
+				</dict>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.utility.argument</string>
+			<key>uid</key>
+			<string>3B608E41-670C-45EF-BDE2-CFC367B0B1B0</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
 				<key>json</key>
 				<string>{
   "alfredworkflow" : {
@@ -568,26 +591,6 @@ EOL</string>
 			<string>alfred.workflow.utility.json</string>
 			<key>uid</key>
 			<string>BF2E3FF8-6ADB-49A3-8779-4BE4396B3F71</string>
-			<key>version</key>
-			<integer>1</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>argument</key>
-				<string></string>
-				<key>passthroughargument</key>
-				<false/>
-				<key>variables</key>
-				<dict>
-					<key>surl</key>
-					<string>{query}</string>
-				</dict>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.utility.argument</string>
-			<key>uid</key>
-			<string>3B608E41-670C-45EF-BDE2-CFC367B0B1B0</string>
 			<key>version</key>
 			<integer>1</integer>
 		</dict>
@@ -688,6 +691,27 @@ EOL</string>
 		<dict>
 			<key>config</key>
 			<dict>
+				<key>lastpathcomponent</key>
+				<false/>
+				<key>onlyshowifquerypopulated</key>
+				<false/>
+				<key>removeextension</key>
+				<false/>
+				<key>text</key>
+				<string>"{query}" copied</string>
+				<key>title</key>
+				<string>Copy Title URL</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.output.notification</string>
+			<key>uid</key>
+			<string>03358F0F-5A05-4BED-ABBD-40AC783B2C63</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
 				<key>concurrently</key>
 				<false/>
 				<key>escaping</key>
@@ -722,27 +746,6 @@ print(output)</string>
 			<string>B8707698-CBD2-4F8D-8897-938E3A9E8195</string>
 			<key>version</key>
 			<integer>2</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>lastpathcomponent</key>
-				<false/>
-				<key>onlyshowifquerypopulated</key>
-				<false/>
-				<key>removeextension</key>
-				<false/>
-				<key>text</key>
-				<string>"{query}" copied</string>
-				<key>title</key>
-				<string>Copy Title URL</string>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.output.notification</string>
-			<key>uid</key>
-			<string>03358F0F-5A05-4BED-ABBD-40AC783B2C63</string>
-			<key>version</key>
-			<integer>1</integer>
 		</dict>
 		<dict>
 			<key>config</key>

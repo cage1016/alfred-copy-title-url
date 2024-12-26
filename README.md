@@ -11,7 +11,7 @@ Visit the [Releases](https://github.com/cage1016/alfred-copy-title-url/releases)
 
 ## Usage
 
-![](./screenshots/1.png)
+![](./screenshots/0.png)
 
 ### Supported patterns
 You might add a custom pattern as your own pattern with the keywords (`title`, `url`, and shortened URL `surl`). The following patterns are supported by default:

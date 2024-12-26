@@ -22,4 +22,8 @@ help: ## this help
 commit: ## commit changes
 	codegpt commit --no_confirm
 
+.PHONY: push
+push: ## push changes
+	git push origin
+
 .DEFAULT_GOAL := help

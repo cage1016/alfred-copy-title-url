@@ -20,6 +20,6 @@ help: ## this help
 
 .PHONY: commit
 commit: ## commit changes
-	codegpt commit
+	codegpt commit --no_confirm
 
 .DEFAULT_GOAL := help

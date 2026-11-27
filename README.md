@@ -66,13 +66,14 @@ Yab, Safari, Safari Technology Preview, Orion, Arc, Dia, Google Chrome (incl. Ca
 ## Development
 
 ```sh
-make link    # Link .workflow into Alfred
-make lint    # Validate info.plist and Alfred UI bundle
-make test    # Run Python unit tests
-make reload  # Reload workflow in Alfred 6
+make link                  # Link .workflow into Alfred
+make lint                  # Validate info.plist and Alfred UI bundle
+make test                  # Run Python unit tests
+make reload                # Reload workflow in Alfred 6
+make release TAG=0.2.0     # Lint, test, create tag v0.2.0, and push to trigger Release
 ```
 
-Releases are tag-driven via GitHub Actions: push a tag (e.g. `git tag v0.2.0 && git push origin v0.2.0`) to automatically inject the version into `info.plist`, run tests, package `CopyTitleURL-<version>.alfredworkflow`, and publish the GitHub Release.
+Releases are tag-driven via GitHub Actions: run `make release TAG=0.2.0` (or `TAG=0.2.0-rc.1` for a prerelease) to validate, tag, and push — CI automatically injects the version into `info.plist`, runs tests, packages `CopyTitleURL-<version>.alfredworkflow`, and publishes the GitHub Release.
 
 ## License
 This project is licensed under the MIT License. See [LICENSE](LICENSE) for details.

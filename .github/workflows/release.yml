@@ -1,30 +1,191 @@
-name: Gallery Release
+name: Release
+
 on:
-  release:
-    types:
-      - published
+  push:
+    tags:
+      - "v*"
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: "Tag to release (e.g. v0.2.0)"
+        required: true
+        type: string
+
+permissions:
+  contents: write
 
 jobs:
-  build:
-    strategy:
-      matrix:
-        platform: [macOS-latest]
-    runs-on: ${{ matrix.platform }}
-    steps:
-      - uses: actions/checkout@v2
-      - name: Parse Event
-        run: |
-          echo "tag=$(jq -r '.release.tag_name' "${GITHUB_EVENT_PATH}" | sed s/^v//)" >> $GITHUB_ENV
-      - name:  Build and pack
-        run: |
-          # pack
-          cd .workflow
-          plutil -replace version -string "${{ env.tag }}" info.plist
-          zip -r ../"CopyTitleURL-${{ env.tag }}.alfredworkflow" .
-          cd ..
+  release:
+    name: Package Alfred Workflow & Publish Release
+    runs-on: macos-15
 
-          echo "artifact=$(echo "CopyTitleURL-${{ env.tag }}.alfredworkflow")" >> $GITHUB_ENV 
-      - uses: shogo82148/actions-upload-release-asset@v1
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
         with:
-          upload_url: ${{ github.event.release.upload_url }}
-          asset_path: "${{ env.artifact }}"
+          ref: ${{ inputs.tag || github.ref }}
+          fetch-depth: 0
+
+      - name: Resolve version tag
+        id: meta
+        run: |
+          TAG="${{ inputs.tag || github.ref_name }}"
+          VERSION="${TAG#v}"
+          PRERELEASE="false"
+          case "${TAG}" in
+            *-*) PRERELEASE="true" ;;
+          esac
+          echo "tag=${TAG}" >> "$GITHUB_OUTPUT"
+          echo "version=${VERSION}" >> "$GITHUB_OUTPUT"
+          echo "prerelease=${PRERELEASE}" >> "$GITHUB_OUTPUT"
+
+      - name: Inject version into info.plist
+        env:
+          VERSION: ${{ steps.meta.outputs.version }}
+        run: |
+          plutil -replace version -string "${VERSION}" .workflow/info.plist
+          plutil -lint .workflow/info.plist
+          /usr/libexec/PlistBuddy -c "Print :version" .workflow/info.plist
+
+      - name: Run unit tests
+        run: python3 -m unittest discover -s tests -v
+
+      - name: Package .alfredworkflow and checksums
+        run: |
+          VERSION="${{ steps.meta.outputs.version }}"
+          ARTIFACT="CopyTitleURL-${VERSION}.alfredworkflow"
+          mkdir -p dist
+          find .workflow -name "__pycache__" -type d -exec rm -rf {} +
+          (cd .workflow && zip -r "../dist/${ARTIFACT}" . \
+            -x '*.DS_Store' '*/__pycache__/*' '*.pyc')
+          (cd dist && shasum -a 256 "${ARTIFACT}" > checksums.txt)
+          cat dist/checksums.txt
+          echo "ARTIFACT=${ARTIFACT}" >> "$GITHUB_ENV"
+          SHA256="$(awk '{print $1}' dist/checksums.txt)"
+          echo "SHA256=${SHA256}" >> "$GITHUB_ENV"
+
+      - name: Generate release notes
+        env:
+          TAG: ${{ steps.meta.outputs.tag }}
+          REPO: ${{ github.repository }}
+        run: |
+          python3 - <<'PY'
+          import os, re, subprocess
+
+          tag = os.environ["TAG"]
+          repo = os.environ["REPO"]
+          artifact = os.environ["ARTIFACT"]
+          sha256 = os.environ["SHA256"]
+
+          # Find previous tag reachable from tag^
+          prev_tag = ""
+          res = subprocess.run(
+              ["git", "describe", "--tags", "--abbrev=0", f"{tag}^"],
+              capture_output=True, text=True
+          )
+          if res.returncode == 0:
+              prev_tag = res.stdout.strip()
+
+          rev_range = f"{prev_tag}..{tag}" if prev_tag else tag
+          log_res = subprocess.run(
+              ["git", "log", rev_range, "--no-merges", "--pretty=format:%h%x09%s"],
+              capture_output=True, text=True, check=True
+          )
+
+          sections = [
+              ("feat", "🚀 Features"),
+              ("fix", "🐛 Bug Fixes"),
+              ("perf", "⚡ Performance"),
+              ("refactor", "♻️ Refactoring"),
+              ("docs", "📚 Documentation"),
+              ("test", "🧪 Tests"),
+              ("ci", "⚙️ CI & Build"),
+              ("chore", "🔧 Chores"),
+              ("other", "📦 Other Changes"),
+          ]
+          grouped = {k: [] for k, _ in sections}
+          cc_re = re.compile(r"^([a-zA-Z]+)(?:\(([^)]+)\))?(!)?:\s*(.+)$")
+
+          for line in log_res.stdout.splitlines():
+              if "\t" not in line:
+                  continue
+              sha, subject = line.split("\t", 1)
+              m = cc_re.match(subject.strip())
+              if m:
+                  ctype = m.group(1).lower()
+                  scope = m.group(2)
+                  breaking = m.group(3)
+                  desc = m.group(4)
+                  key = ctype if ctype in grouped else "other"
+                  if ctype == "build":
+                      key = "ci"
+                  prefix = f"**{scope}:** " if scope else ""
+                  if breaking:
+                      prefix = "**BREAKING:** " + prefix
+                  grouped[key].append(f"- {prefix}{desc} (`{sha}`)")
+              else:
+                  grouped["other"].append(f"- {subject.strip()} (`{sha}`)")
+
+          lines = [
+              f"## Copy Title URL {tag}",
+              "",
+              "### Install",
+              "",
+              f"Download `{artifact}` below and double-click to import into **Alfred 6**.",
+              "",
+              "### What's Changed",
+              "",
+          ]
+
+          any_entry = False
+          for key, title in sections:
+              if grouped[key]:
+                  any_entry = True
+                  lines.append(f"#### {title}")
+                  lines.extend(grouped[key])
+                  lines.append("")
+
+          if not any_entry:
+              lines.append("- Maintenance release")
+              lines.append("")
+
+          lines.extend([
+              "### Checksums (SHA-256)",
+              "",
+              "```text",
+              f"{sha256}  {artifact}",
+              "```",
+              "",
+          ])
+
+          if prev_tag:
+              lines.append(f"**Full Changelog**: https://github.com/{repo}/compare/{prev_tag}...{tag}")
+          else:
+              lines.append(f"**Full Changelog**: https://github.com/{repo}/commits/{tag}")
+
+          with open("dist/release-notes.md", "w", encoding="utf-8") as f:
+              f.write("\n".join(lines) + "\n")
+          PY
+          cat dist/release-notes.md
+
+      - name: Create or update GitHub Release
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          TAG="${{ steps.meta.outputs.tag }}"
+          PRERELEASE="${{ steps.meta.outputs.prerelease }}"
+          PRERELEASE_FLAG=""
+          if [ "${PRERELEASE}" = "true" ]; then
+            PRERELEASE_FLAG="--prerelease"
+          fi
+          if gh release view "${TAG}" >/dev/null 2>&1; then
+            gh release upload "${TAG}" "dist/${ARTIFACT}" dist/checksums.txt --clobber
+            gh release edit "${TAG}" --notes-file dist/release-notes.md ${PRERELEASE_FLAG}
+          else
+            gh release create "${TAG}" \
+              "dist/${ARTIFACT}" \
+              dist/checksums.txt \
+              --title "Copy Title URL ${TAG}" \
+              --notes-file dist/release-notes.md \
+              ${PRERELEASE_FLAG}
+          fi

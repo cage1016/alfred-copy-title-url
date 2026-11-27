@@ -1,0 +1,35 @@
+name: CI
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+    branches: [main, master]
+
+jobs:
+  test-and-lint:
+    name: Lint & Test (macOS)
+    runs-on: macos-15
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Show Python version
+        run: python3 --version
+
+      - name: Lint info.plist and ui.json
+        run: |
+          plutil -lint .workflow/info.plist
+          python3 -m json.tool .workflow/picker.alfredui/ui.json >/dev/null
+
+      - name: Run unit tests
+        run: python3 -m unittest discover -s tests -v
+
+      - name: Verify workflow archive packaging
+        run: |
+          mkdir -p dist
+          (cd .workflow && zip -r ../dist/CopyTitleURL-ci.alfredworkflow . \
+            -x '*.DS_Store' '*/__pycache__/*' '*.pyc')
+          unzip -l dist/CopyTitleURL-ci.alfredworkflow | grep -q "info.plist"
+          unzip -l dist/CopyTitleURL-ci.alfredworkflow | grep -q "picker.alfredui/ui.json"

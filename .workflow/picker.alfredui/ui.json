@@ -1,0 +1,450 @@
+{
+  "bundleid": "com.kaichu.copytitleurl.picker",
+  "iconpath": "../icon.png",
+  "variables": {
+    "confirm_selection": {
+      "type": "script",
+      "src": "scripts/copy_selection",
+      "args": ["{value:patterns_list.selected.pattern}"],
+      "async": true
+    },
+    "save_webloc_action": {
+      "type": "script",
+      "src": "scripts/save_webloc",
+      "async": true
+    }
+  },
+  "variablesconfig": {
+    "initial_query": {
+      "src": "args[0]",
+      "default": "",
+      "scriptenv": true
+    },
+    "patterns": {
+      "src": "variable",
+      "default": "",
+      "scriptenv": true
+    },
+    "service": {
+      "src": "variable",
+      "default": "is.gd",
+      "scriptenv": true
+    },
+    "fmctl_path": {
+      "src": "variable",
+      "default": "",
+      "scriptenv": true
+    },
+    "title": {
+      "default": "",
+      "scriptenv": true
+    },
+    "url": {
+      "default": "",
+      "scriptenv": true
+    },
+    "surl": {
+      "default": "",
+      "scriptenv": true
+    },
+    "browser_name": {
+      "default": "",
+      "scriptenv": true
+    },
+    "sel_uid": {
+      "default": "",
+      "scriptenv": true
+    }
+  },
+  "window": {
+    "title": "Copy Title URL",
+    "padding": 12,
+    "root": {
+      "id": "root",
+      "type": "view",
+      "layout": "border",
+      "spacing": 10,
+      "events": [
+        {
+          "triggers": ["preload"],
+          "action": {
+            "type": "script",
+            "src": "scripts/load",
+            "async": true
+          }
+        }
+      ],
+      "shortcuts": [
+        {
+          "shortcut": "↓",
+          "action": {
+            "type": "function",
+            "src": "patterns_list",
+            "args": "selectnext"
+          }
+        },
+        {
+          "shortcut": "↑",
+          "action": {
+            "type": "function",
+            "src": "patterns_list",
+            "args": "selectprevious"
+          }
+        },
+        {
+          "shortcut": "↩",
+          "action": "{var:confirm_selection}"
+        },
+        {
+          "shortcut": "⌘S",
+          "action": "{var:save_webloc_action}"
+        },
+        {
+          "shortcut": "⎋",
+          "action": {
+            "type": "json",
+            "src": {
+              "finish": {}
+            }
+          }
+        }
+      ],
+      "components": [
+        {
+          "id": "header",
+          "type": "view",
+          "layout": "border",
+          "spacing": 10,
+          "constraints": {
+            "region": "top"
+          },
+          "components": [
+            {
+              "id": "browser_icon",
+              "type": "imageview",
+              "resize": "fit",
+              "image": {
+                "type": "file",
+                "src": "../icon.png"
+              },
+              "constraints": {
+                "region": "left",
+                "position": "centre",
+                "size": 32
+              }
+            },
+            {
+              "id": "header_fields",
+              "type": "view",
+              "layout": "inline",
+              "direction": "vertical",
+              "spacing": 2,
+              "constraints": {
+                "region": "centre"
+              },
+              "components": [
+                {
+                  "id": "query",
+                  "type": "textfield",
+                  "placeholder": "Filter copy patterns…",
+                  "focus": true,
+                  "bordered": false,
+                  "focusring": false,
+                  "font": {
+                    "size": "large"
+                  },
+                  "constraints": {
+                    "position": "left",
+                    "stretch": "horizontal"
+                  },
+                  "events": [
+                    {
+                      "triggers": ["changed"],
+                      "action": {
+                        "type": "function",
+                        "src": "patterns_list",
+                        "args": "filterdata"
+                      }
+                    },
+                    {
+                      "triggers": ["actioned"],
+                      "action": "{var:confirm_selection}"
+                    }
+                  ]
+                },
+                {
+                  "id": "page_meta",
+                  "type": "label",
+                  "text": "Detecting active browser…",
+                  "colour": "secondaryLabelColor",
+                  "font": {
+                    "size": "small"
+                  },
+                  "linebreak": "truncatetail",
+                  "constraints": {
+                    "position": "left",
+                    "stretch": "horizontal"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "patterns_list",
+          "type": "dataview",
+          "cols": 1,
+          "spacing": 2,
+          "placeholder": "No matching patterns",
+          "behaviour": {
+            "selection": {
+              "wrap": "vertical"
+            }
+          },
+          "constraints": {
+            "region": "centre",
+            "size": {
+              "height": 260
+            }
+          },
+          "events": [
+            {
+              "triggers": ["changed"],
+              "action": {
+                "type": "json",
+                "variables": {
+                  "sel_uid": "{value:self.selected.uid}",
+                  "sel_preview": "{value:self.selected.preview}",
+                  "sel_badge": "{value:self.selected.badge}"
+                },
+                "src": {
+                  "update": {
+                    "relayout": true,
+                    "ids": {
+                      "preview_text": {
+                        "text": "{var:sel_preview}"
+                      },
+                      "preview_badge": {
+                        "text": "{var:sel_badge}"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          ],
+          "cell": {
+            "height": 46,
+            "init": {
+              "row.background": null,
+              "row_pattern.colour": "labelColor",
+              "row_preview.colour": "secondaryLabelColor"
+            },
+            "selected": {
+              "row.background": "alfredSelectedResultBackgroundColor",
+              "row_pattern.colour": "alfredSelectedResultTextColor",
+              "row_preview.colour": "alfredSelectedResultTextColor"
+            },
+            "root": {
+              "id": "row",
+              "type": "view",
+              "layout": "inline",
+              "direction": "vertical",
+              "padding": 6,
+              "spacing": 2,
+              "cornerradius": 6,
+              "events": [
+                {
+                  "triggers": ["doubleclicked"],
+                  "action": {
+                    "type": "script",
+                    "src": "scripts/copy_selection",
+                    "args": ["{data:pattern}"],
+                    "async": true
+                  }
+                }
+              ],
+              "components": [
+                {
+                  "id": "row_pattern",
+                  "type": "label",
+                  "font": {
+                    "size": "medium",
+                    "weight": "medium"
+                  },
+                  "linebreak": "truncatetail",
+                  "constraints": {
+                    "position": "left",
+                    "stretch": "horizontal"
+                  }
+                },
+                {
+                  "id": "row_preview",
+                  "type": "label",
+                  "colour": "secondaryLabelColor",
+                  "font": {
+                    "size": "small"
+                  },
+                  "linebreak": "truncatetail",
+                  "constraints": {
+                    "position": "left",
+                    "stretch": "horizontal"
+                  }
+                }
+              ]
+            }
+          },
+          "data": {
+            "filter": {
+              "type": "basic",
+              "args": ["row_pattern.text", "row_preview.text", "keywords"],
+              "match": "{value:query.text}",
+              "matchmode": "wordmatchanyorder",
+              "matchempty": true
+            },
+            "src": []
+          }
+        },
+        {
+          "id": "bottom_panel",
+          "type": "view",
+          "layout": "inline",
+          "direction": "vertical",
+          "spacing": 8,
+          "constraints": {
+            "region": "bottom"
+          },
+          "components": [
+            {
+              "id": "preview_box",
+              "type": "view",
+              "layout": "inline",
+              "direction": "vertical",
+              "padding": 8,
+              "spacing": 4,
+              "cornerradius": 6,
+              "background": "controlBackgroundColor",
+              "constraints": {
+                "position": "left",
+                "stretch": "horizontal"
+              },
+              "components": [
+                {
+                  "id": "preview_header",
+                  "type": "view",
+                  "layout": "border",
+                  "constraints": {
+                    "position": "left",
+                    "stretch": "horizontal"
+                  },
+                  "components": [
+                    {
+                      "id": "preview_heading",
+                      "type": "label",
+                      "text": "Preview",
+                      "colour": "secondaryLabelColor",
+                      "font": {
+                        "size": "extrasmall",
+                        "weight": "semibold"
+                      },
+                      "constraints": {
+                        "region": "left"
+                      }
+                    },
+                    {
+                      "id": "preview_badge",
+                      "type": "label",
+                      "text": "",
+                      "colour": "secondaryLabelColor",
+                      "font": {
+                        "size": "extrasmall"
+                      },
+                      "textalign": "right",
+                      "constraints": {
+                        "region": "centre"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "id": "preview_text",
+                  "type": "label",
+                  "text": "Loading…",
+                  "selectable": true,
+                  "linebreak": "wordwrap",
+                  "font": {
+                    "size": "small",
+                    "monospaced": true
+                  },
+                  "constraints": {
+                    "position": "left",
+                    "stretch": "horizontal"
+                  }
+                }
+              ]
+            },
+            {
+              "id": "footer",
+              "type": "view",
+              "layout": "border",
+              "constraints": {
+                "position": "left",
+                "stretch": "horizontal"
+              },
+              "components": [
+                {
+                  "id": "footer_hint",
+                  "type": "label",
+                  "text": "↑↓ Select  ·  ⎋ Close",
+                  "colour": "secondaryLabelColor",
+                  "font": {
+                    "size": "extrasmall"
+                  },
+                  "constraints": {
+                    "region": "left",
+                    "position": "left"
+                  }
+                },
+                {
+                  "id": "footer_actions",
+                  "type": "view",
+                  "layout": "inline",
+                  "direction": "horizontal",
+                  "spacing": 8,
+                  "constraints": {
+                    "region": "right",
+                    "position": "right"
+                  },
+                  "components": [
+                    {
+                      "id": "webloc_btn",
+                      "type": "button",
+                      "text": "Save .webloc ⌘S",
+                      "events": [
+                        {
+                          "triggers": ["actioned"],
+                          "action": "{var:save_webloc_action}"
+                        }
+                      ]
+                    },
+                    {
+                      "id": "copy_btn",
+                      "type": "button",
+                      "text": "Copy ↩",
+                      "events": [
+                        {
+                          "triggers": ["actioned"],
+                          "action": "{var:confirm_selection}"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

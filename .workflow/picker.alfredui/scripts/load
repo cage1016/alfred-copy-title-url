@@ -1,0 +1,106 @@
+#!/usr/bin/env python3
+"""Preload script: detect frontmost browser, fetch active tab, populate patterns."""
+
+import json
+import os
+import sys
+
+HERE = os.path.dirname(os.path.abspath(__file__))
+sys.path.insert(0, HERE)
+
+from browser import detect_frontmost_browser, get_active_tab
+from patterns import any_pattern_needs_surl, build_rows, parse_patterns
+
+
+def resolve_icon(browser: dict[str, str]) -> dict[str, str]:
+    app_path = browser.get("path", "")
+    if app_path and os.path.exists(app_path):
+        return {"type": "fileicon", "src": app_path}
+    workflow_dir = os.path.dirname(os.path.dirname(HERE))
+    name = browser.get("name", "")
+    if name and os.path.isfile(os.path.join(workflow_dir, f"{name}.png")):
+        return {"type": "file", "src": f"../{name}.png"}
+    return {"type": "file", "src": "../icon.png"}
+
+
+def emit_error(message: str, detail: str = "") -> None:
+    payload = {
+        "update": {
+            "ids": {
+                "page_meta": {"text": message},
+                "patterns_list": {"placeholder": message, "data": {"src": []}},
+                "preview_text": {"text": detail or message},
+                "preview_badge": {"text": "Error"},
+            }
+        }
+    }
+    json.dump(payload, sys.stdout, ensure_ascii=False)
+
+
+def main() -> None:
+    patterns_raw = os.environ.get("patterns", "")
+    service = os.environ.get("service", "").strip() or "is.gd"
+    initial_query = os.environ.get("initial_query", "").strip()
+    if initial_query == "<null>":
+        initial_query = ""
+
+    browser = detect_frontmost_browser()
+    if not browser:
+        emit_error("No supported browser found", "Open a supported browser tab and try again.")
+        return
+
+    try:
+        title, url = get_active_tab(browser)
+    except Exception as exc:  # noqa: BLE001
+        emit_error(f"Could not read {browser['name']}", str(exc))
+        return
+
+    if not url and not title:
+        emit_error(f"No active tab in {browser['name']}", "Open a webpage tab and try again.")
+        return
+
+    patterns = parse_patterns(patterns_raw)
+    rows = build_rows(patterns, title, url, service, surl=None)
+    first_uid = rows[0]["uid"] if rows else ""
+
+    ids_update = {
+        "browser_icon": {"image": resolve_icon(browser)},
+        "page_meta": {"text": f"{browser['name']} · {title}" if title else f"{browser['name']} · {url}"},
+        "patterns_list": {
+            "data": {
+                "src": rows,
+                **({"select": first_uid} if first_uid else {}),
+            }
+        },
+        "preview_text": {"text": rows[0]["preview"] if rows else "No patterns configured"},
+        "preview_badge": {"text": rows[0]["badge"] if rows else ""},
+    }
+
+    action: dict = {
+        "variables": {
+            "title": title,
+            "url": url,
+            "surl": "",
+            "browser_name": browser["name"],
+            "sel_uid": first_uid,
+        },
+        "update": {"relayout": True, "ids": ids_update},
+    }
+
+    if initial_query:
+        ids_update["query"] = {"text": initial_query}
+        action["functions"] = {"ids": {"patterns_list": "filterdata"}}
+
+    if url and any_pattern_needs_surl(patterns):
+        action["pulse"] = {
+            "src": "scripts/shorten",
+            "interval": 10,
+            "intervalmode": "delay",
+            "now": True,
+        }
+
+    json.dump(action, sys.stdout, ensure_ascii=False)
+
+
+if __name__ == "__main__":
+    main()

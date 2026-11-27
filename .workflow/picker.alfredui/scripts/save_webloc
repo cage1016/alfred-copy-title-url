@@ -1,0 +1,96 @@
+#!/usr/bin/env python3
+"""Save the current browser URL as a .webloc in the frontmost Finder or QSpace window."""
+
+import json
+import os
+import sys
+
+HERE = os.path.dirname(os.path.abspath(__file__))
+sys.path.insert(0, HERE)
+
+from browser import detect_frontmost_browser, get_active_tab
+from webloc import detect_target_directory, save_webloc
+
+
+def main() -> None:
+    title = os.environ.get("title", "").strip()
+    url = os.environ.get("url", "").strip()
+
+    if not url:
+        browser = detect_frontmost_browser()
+        if browser:
+            try:
+                title, url = get_active_tab(browser)
+            except Exception as exc:  # noqa: BLE001
+                json.dump(
+                    {
+                        "sound": {"src": "Basso"},
+                        "update": {
+                            "relayout": True,
+                            "ids": {
+                                "preview_text": {"text": f"Could not read {browser['name']}: {exc}"},
+                                "preview_badge": {"text": "Error"},
+                            },
+                        },
+                    },
+                    sys.stdout,
+                    ensure_ascii=False,
+                )
+                return
+
+    if not url:
+        json.dump(
+            {
+                "sound": {"src": "Basso"},
+                "update": {
+                    "relayout": True,
+                    "ids": {
+                        "preview_text": {"text": "No active URL to save as .webloc"},
+                        "preview_badge": {"text": "Error"},
+                    },
+                },
+            },
+            sys.stdout,
+            ensure_ascii=False,
+        )
+        return
+
+    try:
+        target_dir, source_label = detect_target_directory()
+        saved_path = save_webloc(title, url, target_dir)
+    except Exception as exc:  # noqa: BLE001
+        json.dump(
+            {
+                "sound": {"src": "Basso"},
+                "update": {
+                    "relayout": True,
+                    "ids": {
+                        "preview_text": {"text": f"Failed to save .webloc: {exc}"},
+                        "preview_badge": {"text": "Error"},
+                    },
+                },
+            },
+            sys.stdout,
+            ensure_ascii=False,
+        )
+        return
+
+    filename = os.path.basename(saved_path)
+    folder_name = os.path.basename(os.path.normpath(target_dir)) or target_dir
+    json.dump(
+        {
+            "notification": {
+                "post": {
+                    "title": f"Saved .webloc ({source_label})",
+                    "text": f"{filename} → {folder_name}",
+                }
+            },
+            "finish": {},
+        },
+        sys.stdout,
+        ensure_ascii=False,
+    )
+
+
+if __name__ == "__main__":
+    main()

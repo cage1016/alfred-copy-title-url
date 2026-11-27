@@ -1,0 +1,62 @@
+#!/usr/bin/env python3
+"""Format the selected pattern (shortening on demand if needed), copy, notify, finish."""
+
+import json
+import os
+import sys
+
+HERE = os.path.dirname(os.path.abspath(__file__))
+sys.path.insert(0, HERE)
+
+from patterns import format_pattern, pattern_needs_surl
+from shortener import shorten_url
+
+
+def main() -> None:
+    pattern = sys.argv[1].strip() if len(sys.argv) > 1 else ""
+    if not pattern or pattern == "<null>":
+        return
+
+    title = os.environ.get("title", "")
+    url = os.environ.get("url", "").strip()
+    surl = os.environ.get("surl", "").strip()
+    service = os.environ.get("service", "").strip() or "is.gd"
+
+    if pattern_needs_surl(pattern) and not surl:
+        try:
+            surl = shorten_url(url, service)
+        except Exception as exc:  # noqa: BLE001
+            json.dump(
+                {
+                    "sound": {"src": "Basso"},
+                    "update": {
+                        "ids": {
+                            "preview_text": {"text": f"Shortening failed ({service}): {exc}"},
+                            "preview_badge": {"text": "Error"},
+                        }
+                    },
+                },
+                sys.stdout,
+                ensure_ascii=False,
+            )
+            return
+
+    rendered = format_pattern(pattern, title, url, surl)
+    json.dump(
+        {
+            "copy": {"type": "text", "src": rendered},
+            "notification": {
+                "post": {
+                    "title": "Copy Title URL",
+                    "text": f'"{rendered}" copied',
+                }
+            },
+            "finish": {},
+        },
+        sys.stdout,
+        ensure_ascii=False,
+    )
+
+
+if __name__ == "__main__":
+    main()

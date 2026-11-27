@@ -8,7 +8,7 @@
 	<string>Tools</string>
 	<key>connections</key>
 	<dict>
-		<key>07D61E40-F689-45DC-AFA3-2C3DFCE20241</key>
+		<key>7F4B2C18-6A9D-4E53-B1C2-9A8E3D4F5B60</key>
 		<array>
 			<dict>
 				<key>destinationuid</key>
@@ -21,126 +21,11 @@
 				<false/>
 			</dict>
 		</array>
-		<key>3033DCA8-0B9E-4590-8F9D-E29BC337800E</key>
-		<array>
-			<dict>
-				<key>destinationuid</key>
-				<string>4C852C23-D21F-4E5D-96CE-E5FCE308C5CD</string>
-				<key>modifiers</key>
-				<integer>0</integer>
-				<key>modifiersubtext</key>
-				<string></string>
-				<key>sourceoutputuid</key>
-				<string>83189711-C850-4471-8CC0-ABEA23219B7B</string>
-				<key>vitoclose</key>
-				<false/>
-			</dict>
-			<dict>
-				<key>destinationuid</key>
-				<string>4C852C23-D21F-4E5D-96CE-E5FCE308C5CD</string>
-				<key>modifiers</key>
-				<integer>0</integer>
-				<key>modifiersubtext</key>
-				<string></string>
-				<key>sourceoutputuid</key>
-				<string>9CE4D4CA-2532-4DD2-9EF3-07A5C8556B6E</string>
-				<key>vitoclose</key>
-				<false/>
-			</dict>
-			<dict>
-				<key>destinationuid</key>
-				<string>D5B40BF8-9DE8-4334-949A-5DB818B06F38</string>
-				<key>modifiers</key>
-				<integer>0</integer>
-				<key>modifiersubtext</key>
-				<string></string>
-				<key>vitoclose</key>
-				<false/>
-			</dict>
-		</array>
-		<key>3417849D-7793-4024-B1CF-897F40A8DE67</key>
-		<array>
-			<dict>
-				<key>destinationuid</key>
-				<string>3033DCA8-0B9E-4590-8F9D-E29BC337800E</string>
-				<key>modifiers</key>
-				<integer>0</integer>
-				<key>modifiersubtext</key>
-				<string></string>
-				<key>vitoclose</key>
-				<false/>
-			</dict>
-		</array>
-		<key>36DF2053-B6B1-487E-9934-6AD681CEFD27</key>
-		<array>
-			<dict>
-				<key>destinationuid</key>
-				<string>03358F0F-5A05-4BED-ABBD-40AC783B2C63</string>
-				<key>modifiers</key>
-				<integer>0</integer>
-				<key>modifiersubtext</key>
-				<string></string>
-				<key>vitoclose</key>
-				<false/>
-			</dict>
-		</array>
-		<key>3B608E41-670C-45EF-BDE2-CFC367B0B1B0</key>
-		<array>
-			<dict>
-				<key>destinationuid</key>
-				<string>58801794-BB0F-4FEC-BF35-B548890C99D1</string>
-				<key>modifiers</key>
-				<integer>0</integer>
-				<key>modifiersubtext</key>
-				<string></string>
-				<key>vitoclose</key>
-				<false/>
-			</dict>
-		</array>
-		<key>448330C6-347B-457C-A727-93A7AAFF3D04</key>
-		<array>
-			<dict>
-				<key>destinationuid</key>
-				<string>D627547A-C381-400B-B473-F313ED59BA02</string>
-				<key>modifiers</key>
-				<integer>0</integer>
-				<key>modifiersubtext</key>
-				<string></string>
-				<key>vitoclose</key>
-				<false/>
-			</dict>
-		</array>
-		<key>4C852C23-D21F-4E5D-96CE-E5FCE308C5CD</key>
-		<array>
-			<dict>
-				<key>destinationuid</key>
-				<string>07D61E40-F689-45DC-AFA3-2C3DFCE20241</string>
-				<key>modifiers</key>
-				<integer>0</integer>
-				<key>modifiersubtext</key>
-				<string></string>
-				<key>vitoclose</key>
-				<false/>
-			</dict>
-		</array>
-		<key>58801794-BB0F-4FEC-BF35-B548890C99D1</key>
-		<array>
-			<dict>
-				<key>destinationuid</key>
-				<string>C51CC5CD-CEF6-4C11-9BF5-F76A0CA71699</string>
-				<key>modifiers</key>
-				<integer>0</integer>
-				<key>modifiersubtext</key>
-				<string></string>
-				<key>vitoclose</key>
-				<false/>
-			</dict>
-		</array>
 		<key>B083540C-0BC5-416E-8EC3-864DD976A303</key>
 		<array>
 			<dict>
 				<key>destinationuid</key>
-				<string>D376BB90-7F43-4247-8B62-E75CC3A90553</string>
+				<string>E4868419-902C-4521-A20D-AE2FFF1F626C</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -149,11 +34,11 @@
 				<false/>
 			</dict>
 		</array>
-		<key>B590C585-904A-41FA-B225-052A39488DCE</key>
+		<key>C1D2E3F4-5A6B-4C7D-8E9F-0A1B2C3D4E5F</key>
 		<array>
 			<dict>
 				<key>destinationuid</key>
-				<string>3B608E41-670C-45EF-BDE2-CFC367B0B1B0</string>
+				<string>D2E3F4A5-6B7C-4D8E-9F0A-1B2C3D4E5F60</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -162,101 +47,11 @@
 				<false/>
 			</dict>
 		</array>
-		<key>B8707698-CBD2-4F8D-8897-938E3A9E8195</key>
+		<key>D2E3F4A5-6B7C-4D8E-9F0A-1B2C3D4E5F60</key>
 		<array>
 			<dict>
 				<key>destinationuid</key>
-				<string>C51CC5CD-CEF6-4C11-9BF5-F76A0CA71699</string>
-				<key>modifiers</key>
-				<integer>0</integer>
-				<key>modifiersubtext</key>
-				<string></string>
-				<key>vitoclose</key>
-				<false/>
-			</dict>
-		</array>
-		<key>BF2E3FF8-6ADB-49A3-8779-4BE4396B3F71</key>
-		<array>
-			<dict>
-				<key>destinationuid</key>
-				<string>B590C585-904A-41FA-B225-052A39488DCE</string>
-				<key>modifiers</key>
-				<integer>0</integer>
-				<key>modifiersubtext</key>
-				<string></string>
-				<key>vitoclose</key>
-				<false/>
-			</dict>
-		</array>
-		<key>C51CC5CD-CEF6-4C11-9BF5-F76A0CA71699</key>
-		<array>
-			<dict>
-				<key>destinationuid</key>
-				<string>36DF2053-B6B1-487E-9934-6AD681CEFD27</string>
-				<key>modifiers</key>
-				<integer>0</integer>
-				<key>modifiersubtext</key>
-				<string></string>
-				<key>vitoclose</key>
-				<false/>
-			</dict>
-		</array>
-		<key>D376BB90-7F43-4247-8B62-E75CC3A90553</key>
-		<array>
-			<dict>
-				<key>destinationuid</key>
-				<string>3417849D-7793-4024-B1CF-897F40A8DE67</string>
-				<key>modifiers</key>
-				<integer>0</integer>
-				<key>modifiersubtext</key>
-				<string></string>
-				<key>vitoclose</key>
-				<false/>
-			</dict>
-		</array>
-		<key>D5B40BF8-9DE8-4334-949A-5DB818B06F38</key>
-		<array>
-			<dict>
-				<key>destinationuid</key>
-				<string>07D61E40-F689-45DC-AFA3-2C3DFCE20241</string>
-				<key>modifiers</key>
-				<integer>0</integer>
-				<key>modifiersubtext</key>
-				<string></string>
-				<key>vitoclose</key>
-				<false/>
-			</dict>
-		</array>
-		<key>D627547A-C381-400B-B473-F313ED59BA02</key>
-		<array>
-			<dict>
-				<key>destinationuid</key>
-				<string>BF2E3FF8-6ADB-49A3-8779-4BE4396B3F71</string>
-				<key>modifiers</key>
-				<integer>0</integer>
-				<key>modifiersubtext</key>
-				<string></string>
-				<key>sourceoutputuid</key>
-				<string>EECCE465-EE9E-4D3C-AB24-DB0EC21E577F</string>
-				<key>vitoclose</key>
-				<false/>
-			</dict>
-			<dict>
-				<key>destinationuid</key>
-				<string>B8707698-CBD2-4F8D-8897-938E3A9E8195</string>
-				<key>modifiers</key>
-				<integer>0</integer>
-				<key>modifiersubtext</key>
-				<string></string>
-				<key>vitoclose</key>
-				<false/>
-			</dict>
-		</array>
-		<key>E4868419-902C-4521-A20D-AE2FFF1F626C</key>
-		<array>
-			<dict>
-				<key>destinationuid</key>
-				<string>448330C6-347B-457C-A727-93A7AAFF3D04</string>
+				<string>E3F4A5B6-7C8D-4E9F-0A1B-2C3D4E5F6071</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -269,98 +64,13 @@
 	<key>createdby</key>
 	<string>KAI CHU CHUNG</string>
 	<key>description</key>
-	<string>Copy the title and URL</string>
+	<string>Copy the title and URL from the frontmost browser</string>
 	<key>disabled</key>
 	<false/>
 	<key>name</key>
 	<string>Copy Title URL</string>
 	<key>objects</key>
 	<array>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>tasksettings</key>
-				<dict>
-					<key>custom_browser</key>
-					<string>{var:browser_name}</string>
-					<key>out_format</key>
-					<string>title_tab_url</string>
-					<key>popup_browser</key>
-					<string>custom</string>
-				</dict>
-				<key>taskuid</key>
-				<string>com.alfredapp.automation.extras/web-browsers/webkit-browsers/webkit.tabs.current</string>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.automation.task</string>
-			<key>uid</key>
-			<string>4C852C23-D21F-4E5D-96CE-E5FCE308C5CD</string>
-			<key>version</key>
-			<integer>1</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>concurrently</key>
-				<false/>
-				<key>escaping</key>
-				<integer>102</integer>
-				<key>script</key>
-				<string>import os
-
-# Read environment variables
-pattern = os.getenv("pattern")
-title = os.getenv("title")
-surl = os.getenv("surl")
-
-# Check if required environment variables are set
-if pattern is None or title is None or surl is None:
-    raise ValueError("Environment variables 'pattern', 'title', and 'surl' must be set.")
-
-# Replace placeholders in the pattern with the values
-output = pattern.replace("title", title).replace("surl", surl)
-
-# Output the resulting string
-print(output)</string>
-				<key>scriptargtype</key>
-				<integer>1</integer>
-				<key>scriptfile</key>
-				<string></string>
-				<key>type</key>
-				<integer>9</integer>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.action.script</string>
-			<key>uid</key>
-			<string>58801794-BB0F-4FEC-BF35-B548890C99D1</string>
-			<key>version</key>
-			<integer>2</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict/>
-			<key>type</key>
-			<string>alfred.workflow.automation.task</string>
-			<key>uid</key>
-			<string>B590C585-904A-41FA-B225-052A39488DCE</string>
-			<key>version</key>
-			<integer>1</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>tasksettings</key>
-				<dict/>
-				<key>taskuid</key>
-				<string>com.alfredapp.automation.core/macOS/app.current.browser</string>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.automation.task</string>
-			<key>uid</key>
-			<string>D376BB90-7F43-4247-8B62-E75CC3A90553</string>
-			<key>version</key>
-			<integer>1</integer>
-		</dict>
 		<dict>
 			<key>config</key>
 			<dict>
@@ -373,11 +83,11 @@ print(output)</string>
 				<key>focusedappvariablename</key>
 				<string></string>
 				<key>hotkey</key>
-				<integer>32</integer>
+				<integer>8</integer>
 				<key>hotmod</key>
 				<integer>1835008</integer>
 				<key>hotstring</key>
-				<string>U</string>
+				<string>C</string>
 				<key>leftcursor</key>
 				<false/>
 				<key>modsmode</key>
@@ -395,296 +105,82 @@ print(output)</string>
 		<dict>
 			<key>config</key>
 			<dict>
+				<key>launchmode</key>
+				<integer>0</integer>
+				<key>path</key>
+				<string>picker.alfredui</string>
+				<key>stackview</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.userinterface.alfredui</string>
+			<key>uid</key>
+			<string>E4868419-902C-4521-A20D-AE2FFF1F626C</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argumenttype</key>
+				<integer>1</integer>
+				<key>keyword</key>
+				<string>{var:keyword}</string>
+				<key>subtext</key>
+				<string>Copy frontmost browser tab title and URL</string>
+				<key>text</key>
+				<string>Copy Title URL</string>
+				<key>withspace</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.keyword</string>
+			<key>uid</key>
+			<string>7F4B2C18-6A9D-4E53-B1C2-9A8E3D4F5B60</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
 				<key>concurrently</key>
 				<false/>
 				<key>escaping</key>
 				<integer>102</integer>
 				<key>script</key>
-				<string>#!/bin/bash
-
-# Input query from Alfred (title and URL separated by a space)
-query="$1"
-
-# Extract the last word (URL) from the query and assign the rest as title
-url=$(echo "$query" | awk '{print $NF}')
-title=$(echo "$query" | sed "s|$url||" | xargs)
-
-# Output Alfred variables and set the URL as the argument for the next step
-cat &lt;&lt;EOL
-{"alfredworkflow": {"variables": {"title": "$title", "url": "$url"}, "arg": ""}}
-EOL</string>
+				<string></string>
 				<key>scriptargtype</key>
 				<integer>1</integer>
 				<key>scriptfile</key>
-				<string></string>
+				<string>picker.alfredui/scripts/save_webloc_cli</string>
 				<key>type</key>
-				<integer>0</integer>
+				<integer>8</integer>
 			</dict>
 			<key>type</key>
 			<string>alfred.workflow.action.script</string>
 			<key>uid</key>
-			<string>07D61E40-F689-45DC-AFA3-2C3DFCE20241</string>
+			<string>D2E3F4A5-6B7C-4D8E-9F0A-1B2C3D4E5F60</string>
 			<key>version</key>
 			<integer>2</integer>
 		</dict>
 		<dict>
 			<key>config</key>
 			<dict>
-				<key>conditions</key>
-				<array>
-					<dict>
-						<key>inputstring</key>
-						<string></string>
-						<key>matchcasesensitive</key>
-						<false/>
-						<key>matchmode</key>
-						<integer>4</integer>
-						<key>matchstring</key>
-						<string>Safari</string>
-						<key>outputlabel</key>
-						<string>Safari</string>
-						<key>uid</key>
-						<string>9CE4D4CA-2532-4DD2-9EF3-07A5C8556B6E</string>
-					</dict>
-					<dict>
-						<key>inputstring</key>
-						<string></string>
-						<key>matchcasesensitive</key>
-						<false/>
-						<key>matchmode</key>
-						<integer>4</integer>
-						<key>matchstring</key>
-						<string>Orion</string>
-						<key>outputlabel</key>
-						<string>Orion</string>
-						<key>uid</key>
-						<string>83189711-C850-4471-8CC0-ABEA23219B7B</string>
-					</dict>
-				</array>
-				<key>elselabel</key>
-				<string>Other Browsers</string>
-				<key>hideelse</key>
-				<false/>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.utility.conditional</string>
-			<key>uid</key>
-			<string>3033DCA8-0B9E-4590-8F9D-E29BC337800E</string>
-			<key>version</key>
-			<integer>1</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>alfredfiltersresults</key>
-				<false/>
-				<key>alfredfiltersresultsmatchmode</key>
-				<integer>0</integer>
-				<key>argumenttreatemptyqueryasnil</key>
-				<true/>
-				<key>argumenttrimmode</key>
-				<integer>0</integer>
 				<key>argumenttype</key>
 				<integer>1</integer>
-				<key>escaping</key>
-				<integer>68</integer>
-				<key>queuedelaycustom</key>
-				<integer>3</integer>
-				<key>queuedelayimmediatelyinitially</key>
-				<true/>
-				<key>queuedelaymode</key>
-				<integer>0</integer>
-				<key>queuemode</key>
-				<integer>1</integer>
-				<key>runningsubtext</key>
-				<string></string>
-				<key>script</key>
-				<string>(() =&gt; {
-    // Access environment variables
-    const env = $.NSProcessInfo.processInfo.environment;
-    const patterns = ObjC.unwrap(env.objectForKey("patterns"));
-    const browserName = ObjC.unwrap(env.objectForKey("browser_name"));
-    const url = ObjC.unwrap(env.objectForKey("url"));
-    const title = ObjC.unwrap(env.objectForKey("title"));
-
-    if (!patterns) {
-        throw new Error("Environment variable 'patterns' must be set.");
-    }
-
-    // Split patterns by newline
-    const patternList = patterns.split("\n");
-
-    // Process each pattern and output the result
-    const output = patternList.map((pattern, index) =&gt; {
-        return {
-            uid: `pattern-${index}`,            
-            quicklookurl: url,
-            subtitle: title,
-            title: pattern.trim(),
-            arg: pattern.trim(),
-            icon : {
-                path: `./${browserName}.png`
-            }
-        };
-    });
-
-    // Return Alfred-compatible JSON
-    return JSON.stringify({ items: output });
-})();</string>
-				<key>scriptargtype</key>
-				<integer>1</integer>
-				<key>scriptfile</key>
-				<string></string>
+				<key>keyword</key>
+				<string>{var:save_url_keyword}</string>
 				<key>subtext</key>
-				<string></string>
-				<key>title</key>
-				<string></string>
-				<key>type</key>
-				<integer>7</integer>
+				<string>Save frontmost browser URL as .webloc to Finder / QSpace (optional custom filename)</string>
+				<key>text</key>
+				<string>Save URL as .webloc</string>
 				<key>withspace</key>
 				<true/>
 			</dict>
 			<key>type</key>
-			<string>alfred.workflow.input.scriptfilter</string>
+			<string>alfred.workflow.input.keyword</string>
 			<key>uid</key>
-			<string>E4868419-902C-4521-A20D-AE2FFF1F626C</string>
-			<key>version</key>
-			<integer>3</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>argument</key>
-				<string></string>
-				<key>passthroughargument</key>
-				<false/>
-				<key>variables</key>
-				<dict>
-					<key>surl</key>
-					<string>{query}</string>
-				</dict>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.utility.argument</string>
-			<key>uid</key>
-			<string>3B608E41-670C-45EF-BDE2-CFC367B0B1B0</string>
-			<key>version</key>
-			<integer>1</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>json</key>
-				<string>{
-  "alfredworkflow" : {
-    "arg" : "{var:url}",
-    "config" : {
-      "taskuid" : "com.alfredapp.automation.core/url-processing/url.shorten",
-      "tasksettings" : {
-        "service" : "{var:service}"
-      }
-    }
-  }
-}</string>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.utility.json</string>
-			<key>uid</key>
-			<string>BF2E3FF8-6ADB-49A3-8779-4BE4396B3F71</string>
-			<key>version</key>
-			<integer>1</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>conditions</key>
-				<array>
-					<dict>
-						<key>inputstring</key>
-						<string>{var:pattern}</string>
-						<key>matchcasesensitive</key>
-						<false/>
-						<key>matchmode</key>
-						<integer>4</integer>
-						<key>matchstring</key>
-						<string>surl</string>
-						<key>outputlabel</key>
-						<string>Contain surl</string>
-						<key>uid</key>
-						<string>EECCE465-EE9E-4D3C-AB24-DB0EC21E577F</string>
-					</dict>
-				</array>
-				<key>elselabel</key>
-				<string>else</string>
-				<key>hideelse</key>
-				<false/>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.utility.conditional</string>
-			<key>uid</key>
-			<string>D627547A-C381-400B-B473-F313ED59BA02</string>
-			<key>version</key>
-			<integer>1</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>argument</key>
-				<string>{query}</string>
-				<key>passthroughargument</key>
-				<false/>
-				<key>variables</key>
-				<dict>
-					<key>browser_name</key>
-					<string>{query}</string>
-				</dict>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.utility.argument</string>
-			<key>uid</key>
-			<string>3417849D-7793-4024-B1CF-897F40A8DE67</string>
-			<key>version</key>
-			<integer>1</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>argument</key>
-				<string>{query}</string>
-				<key>passthroughargument</key>
-				<false/>
-				<key>variables</key>
-				<dict>
-					<key>pattern</key>
-					<string>{query}</string>
-				</dict>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.utility.argument</string>
-			<key>uid</key>
-			<string>448330C6-347B-457C-A727-93A7AAFF3D04</string>
-			<key>version</key>
-			<integer>1</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>tasksettings</key>
-				<dict>
-					<key>custom_browser</key>
-					<string>{var:browser_name}</string>
-					<key>out_format</key>
-					<string>title_tab_url</string>
-					<key>popup_browser</key>
-					<string>custom</string>
-				</dict>
-				<key>taskuid</key>
-				<string>com.alfredapp.automation.extras/web-browsers/chromium-browsers/chromium.tabs.current</string>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.automation.task</string>
-			<key>uid</key>
-			<string>D5B40BF8-9DE8-4334-949A-5DB818B06F38</string>
+			<string>C1D2E3F4-5A6B-4C7D-8E9F-0A1B2C3D4E5F</string>
 			<key>version</key>
 			<integer>1</integer>
 		</dict>
@@ -694,88 +190,18 @@ EOL</string>
 				<key>lastpathcomponent</key>
 				<false/>
 				<key>onlyshowifquerypopulated</key>
-				<false/>
+				<true/>
 				<key>removeextension</key>
 				<false/>
 				<key>text</key>
-				<string>"{query}" copied</string>
+				<string>{query}</string>
 				<key>title</key>
-				<string>Copy Title URL</string>
+				<string>{var:notif_title}</string>
 			</dict>
 			<key>type</key>
 			<string>alfred.workflow.output.notification</string>
 			<key>uid</key>
-			<string>03358F0F-5A05-4BED-ABBD-40AC783B2C63</string>
-			<key>version</key>
-			<integer>1</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>concurrently</key>
-				<false/>
-				<key>escaping</key>
-				<integer>102</integer>
-				<key>script</key>
-				<string>import os
-
-# Read environment variables
-pattern = os.getenv("pattern")
-title = os.getenv("title")
-url = os.getenv("url")
-
-# Check if required environment variables are set
-if pattern is None or title is None or url is None:
-    raise ValueError("Environment variables 'pattern', 'title', and 'url' must be set.")
-
-# Replace placeholders in the pattern with the values
-output = pattern.replace("title", title).replace("url", url)
-
-# Output the resulting string
-print(output)</string>
-				<key>scriptargtype</key>
-				<integer>1</integer>
-				<key>scriptfile</key>
-				<string></string>
-				<key>type</key>
-				<integer>9</integer>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.action.script</string>
-			<key>uid</key>
-			<string>B8707698-CBD2-4F8D-8897-938E3A9E8195</string>
-			<key>version</key>
-			<integer>2</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>autopaste</key>
-				<false/>
-				<key>clipboardtext</key>
-				<string>{query}</string>
-				<key>ignoredynamicplaceholders</key>
-				<false/>
-				<key>transient</key>
-				<false/>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.output.clipboard</string>
-			<key>uid</key>
-			<string>36DF2053-B6B1-487E-9934-6AD681CEFD27</string>
-			<key>version</key>
-			<integer>3</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>type</key>
-				<integer>0</integer>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.utility.transform</string>
-			<key>uid</key>
-			<string>C51CC5CD-CEF6-4C11-9BF5-F76A0CA71699</string>
+			<string>E3F4A5B6-7C8D-4E9F-0A1B-2C3D4E5F6071</string>
 			<key>version</key>
 			<integer>1</integer>
 		</dict>
@@ -783,10 +209,19 @@ print(output)</string>
 	<key>readme</key>
 	<string>## Usage
 
-![](./1.png)
+Trigger with the configured Hotkey or Keyword (`ctu` by default) to copy the frontmost browser's active tab title and URL.
+
+- Type to filter patterns with live formatted preview
+- `↩` (or double-click / click Copy ↩): copy the selected pattern
+- `⌘S` (or click Save .webloc ⌘S): save the current URL as a `.webloc` file to the frontmost Finder or QSpace window (via `fmctl`, fallback to Desktop)
+- `⎋`: close
+
+### Supported browsers
+Yab, Safari, Safari Technology Preview, Orion, Arc, Dia, Google Chrome (incl. Canary/Beta), Chromium, Brave Browser, Microsoft Edge, Vivaldi, Opera.
 
 ### Supported patterns
-You might add a custom pattern as your own pattern with the keywords (`title`, `url`, and shortened URL `surl`). The following patterns are supported by default:
+Configure custom patterns in Workflow Configuration using keywords `title`, `url`, and `surl` (shortened URL). Lines starting with `#` are ignored.
+
 ```
 title
 [title](url)
@@ -799,139 +234,93 @@ title - surl
 ```</string>
 	<key>uidata</key>
 	<dict>
-		<key>03358F0F-5A05-4BED-ABBD-40AC783B2C63</key>
+		<key>7F4B2C18-6A9D-4E53-B1C2-9A8E3D4F5B60</key>
 		<dict>
 			<key>xpos</key>
-			<real>2300</real>
+			<real>80</real>
 			<key>ypos</key>
-			<real>525</real>
-		</dict>
-		<key>07D61E40-F689-45DC-AFA3-2C3DFCE20241</key>
-		<dict>
-			<key>xpos</key>
-			<real>865</real>
-			<key>ypos</key>
-			<real>365</real>
-		</dict>
-		<key>3033DCA8-0B9E-4590-8F9D-E29BC337800E</key>
-		<dict>
-			<key>xpos</key>
-			<real>495</real>
-			<key>ypos</key>
-			<real>365</real>
-		</dict>
-		<key>3417849D-7793-4024-B1CF-897F40A8DE67</key>
-		<dict>
-			<key>note</key>
-			<string>Save browser name</string>
-			<key>xpos</key>
-			<real>390</real>
-			<key>ypos</key>
-			<real>390</real>
-		</dict>
-		<key>36DF2053-B6B1-487E-9934-6AD681CEFD27</key>
-		<dict>
-			<key>xpos</key>
-			<real>2140</real>
-			<key>ypos</key>
-			<real>525</real>
-		</dict>
-		<key>3B608E41-670C-45EF-BDE2-CFC367B0B1B0</key>
-		<dict>
-			<key>xpos</key>
-			<real>1735</real>
-			<key>ypos</key>
-			<real>380</real>
-		</dict>
-		<key>448330C6-347B-457C-A727-93A7AAFF3D04</key>
-		<dict>
-			<key>note</key>
-			<string>Save Copy Pattern</string>
-			<key>xpos</key>
-			<real>1210</real>
-			<key>ypos</key>
-			<real>395</real>
-		</dict>
-		<key>4C852C23-D21F-4E5D-96CE-E5FCE308C5CD</key>
-		<dict>
-			<key>xpos</key>
-			<real>675</real>
-			<key>ypos</key>
-			<real>305</real>
-		</dict>
-		<key>58801794-BB0F-4FEC-BF35-B548890C99D1</key>
-		<dict>
-			<key>xpos</key>
-			<real>1820</real>
-			<key>ypos</key>
-			<real>350</real>
+			<real>240</real>
 		</dict>
 		<key>B083540C-0BC5-416E-8EC3-864DD976A303</key>
 		<dict>
 			<key>xpos</key>
-			<real>30</real>
+			<real>80</real>
 			<key>ypos</key>
-			<real>360</real>
+			<real>80</real>
 		</dict>
-		<key>B590C585-904A-41FA-B225-052A39488DCE</key>
+		<key>C1D2E3F4-5A6B-4C7D-8E9F-0A1B2C3D4E5F</key>
 		<dict>
 			<key>xpos</key>
-			<real>1560</real>
+			<real>80</real>
 			<key>ypos</key>
-			<real>350</real>
+			<real>400</real>
 		</dict>
-		<key>B8707698-CBD2-4F8D-8897-938E3A9E8195</key>
+		<key>D2E3F4A5-6B7C-4D8E-9F0A-1B2C3D4E5F60</key>
 		<dict>
 			<key>xpos</key>
-			<real>1560</real>
+			<real>320</real>
 			<key>ypos</key>
-			<real>525</real>
+			<real>400</real>
 		</dict>
-		<key>BF2E3FF8-6ADB-49A3-8779-4BE4396B3F71</key>
+		<key>E3F4A5B6-7C8D-4E9F-0A1B-2C3D4E5F6071</key>
 		<dict>
 			<key>xpos</key>
-			<real>1470</real>
+			<real>560</real>
 			<key>ypos</key>
-			<real>380</real>
-		</dict>
-		<key>C51CC5CD-CEF6-4C11-9BF5-F76A0CA71699</key>
-		<dict>
-			<key>xpos</key>
-			<real>2055</real>
-			<key>ypos</key>
-			<real>555</real>
-		</dict>
-		<key>D376BB90-7F43-4247-8B62-E75CC3A90553</key>
-		<dict>
-			<key>xpos</key>
-			<real>195</real>
-			<key>ypos</key>
-			<real>360</real>
-		</dict>
-		<key>D5B40BF8-9DE8-4334-949A-5DB818B06F38</key>
-		<dict>
-			<key>xpos</key>
-			<real>675</real>
-			<key>ypos</key>
-			<real>460</real>
-		</dict>
-		<key>D627547A-C381-400B-B473-F313ED59BA02</key>
-		<dict>
-			<key>xpos</key>
-			<real>1325</real>
-			<key>ypos</key>
-			<real>385</real>
+			<real>400</real>
 		</dict>
 		<key>E4868419-902C-4521-A20D-AE2FFF1F626C</key>
 		<dict>
 			<key>xpos</key>
-			<real>1020</real>
+			<real>320</real>
 			<key>ypos</key>
-			<real>365</real>
+			<real>160</real>
 		</dict>
 	</dict>
 	<key>userconfigurationconfig</key>
 	<array>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>default</key>
+				<string>ctu</string>
+				<key>placeholder</key>
+				<string>ctu</string>
+				<key>required</key>
+				<false/>
+				<key>trim</key>
+				<true/>
+			</dict>
+			<key>description</key>
+			<string>Keyword to open the Copy Title URL picker</string>
+			<key>label</key>
+			<string>Keyword</string>
+			<key>type</key>
+			<string>textfield</string>
+			<key>variable</key>
+			<string>keyword</string>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>default</key>
+				<string>stu</string>
+				<key>placeholder</key>
+				<string>stu</string>
+				<key>required</key>
+				<false/>
+				<key>trim</key>
+				<true/>
+			</dict>
+			<key>description</key>
+			<string>Keyword to directly save the current URL as a .webloc file</string>
+			<key>label</key>
+			<string>Save URL Keyword</string>
+			<key>type</key>
+			<string>textfield</string>
+			<key>variable</key>
+			<string>save_url_keyword</string>
+		</dict>
 		<dict>
 			<key>config</key>
 			<dict>
@@ -950,9 +339,9 @@ title - surl
 				</array>
 			</dict>
 			<key>description</key>
-			<string></string>
+			<string>Service used for the surl keyword</string>
 			<key>label</key>
-			<string>Service</string>
+			<string>URL Shortener</string>
 			<key>type</key>
 			<string>popupbutton</string>
 			<key>variable</key>
@@ -978,7 +367,7 @@ title - surl
 				<integer>9</integer>
 			</dict>
 			<key>description</key>
-			<string>title, url, surl</string>
+			<string>One pattern per line. Keywords: title, url, surl. Lines starting with # are ignored.</string>
 			<key>label</key>
 			<string>Patterns</string>
 			<key>type</key>
@@ -988,7 +377,7 @@ title - surl
 		</dict>
 	</array>
 	<key>version</key>
-	<string>0.1.0</string>
+	<string>0.0.0-dev</string>
 	<key>webaddress</key>
 	<string>https://github.com/cage1016/alfred-copy-title-url</string>
 </dict>

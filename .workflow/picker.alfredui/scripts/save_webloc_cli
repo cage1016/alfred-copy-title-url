@@ -1,0 +1,61 @@
+#!/usr/bin/env python3
+"""Direct Alfred CLI action for `stu`: save frontmost browser URL as .webloc."""
+
+import json
+import os
+import sys
+
+HERE = os.path.dirname(os.path.abspath(__file__))
+sys.path.insert(0, HERE)
+
+from browser import detect_frontmost_browser, get_active_tab
+from webloc import detect_target_directory, save_webloc
+
+
+def emit(title: str, message: str) -> None:
+    json.dump(
+        {
+            "alfredworkflow": {
+                "arg": message,
+                "variables": {
+                    "notif_title": title,
+                },
+            }
+        },
+        sys.stdout,
+        ensure_ascii=False,
+    )
+
+
+def main() -> None:
+    custom_name = sys.argv[1].strip() if len(sys.argv) > 1 else ""
+
+    browser = detect_frontmost_browser()
+    if not browser:
+        emit("Save .webloc Failed", "No supported browser found")
+        return
+
+    try:
+        title, url = get_active_tab(browser)
+    except Exception as exc:  # noqa: BLE001
+        emit("Save .webloc Failed", f"Could not read {browser['name']}: {exc}")
+        return
+
+    if not url:
+        emit("Save .webloc Failed", f"No active URL in {browser['name']}")
+        return
+
+    try:
+        target_dir, source_label = detect_target_directory()
+        saved_path = save_webloc(custom_name or title, url, target_dir)
+    except Exception as exc:  # noqa: BLE001
+        emit("Save .webloc Failed", str(exc))
+        return
+
+    filename = os.path.basename(saved_path)
+    folder_name = os.path.basename(os.path.normpath(target_dir)) or target_dir
+    emit(f"Saved .webloc ({source_label})", f"{filename} → {folder_name}")
+
+
+if __name__ == "__main__":
+    main()

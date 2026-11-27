@@ -1,0 +1,54 @@
+#!/usr/bin/env python3
+"""One-shot background pulse script: shorten URL and refresh live previews."""
+
+import json
+import os
+import sys
+
+HERE = os.path.dirname(os.path.abspath(__file__))
+sys.path.insert(0, HERE)
+
+from patterns import build_rows, parse_patterns
+from shortener import shorten_url
+
+
+def main() -> None:
+    title = os.environ.get("title", "")
+    url = os.environ.get("url", "").strip()
+    patterns_raw = os.environ.get("patterns", "")
+    service = os.environ.get("service", "").strip() or "is.gd"
+    sel_uid = os.environ.get("sel_uid", "").strip()
+
+    if not url:
+        json.dump({"pulse": {"interval": 0}}, sys.stdout)
+        return
+
+    surl = ""
+    shorten_error = None
+    try:
+        surl = shorten_url(url, service)
+    except Exception as exc:  # noqa: BLE001
+        shorten_error = str(exc)
+
+    patterns = parse_patterns(patterns_raw)
+    rows = build_rows(patterns, title, url, service, surl=surl or None, shorten_error=shorten_error)
+
+    selected_row = next((r for r in rows if r["uid"] == sel_uid), rows[0] if rows else None)
+
+    ids_update = {
+        "patterns_list": {"data": {"src": rows}},
+    }
+    if selected_row:
+        ids_update["preview_text"] = {"text": selected_row["preview"]}
+        ids_update["preview_badge"] = {"text": selected_row["badge"]}
+
+    action = {
+        "pulse": {"interval": 0},
+        "variables": {"surl": surl},
+        "update": {"relayout": True, "ids": ids_update},
+    }
+    json.dump(action, sys.stdout, ensure_ascii=False)
+
+
+if __name__ == "__main__":
+    main()
